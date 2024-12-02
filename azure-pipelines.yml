@@ -8,7 +8,7 @@ trigger:
 - master
 
 pool:
-  vmImage: Default
+  vmImage: Azure Piplines
 
 steps:
 - script: echo Hello, world!
