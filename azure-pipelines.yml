@@ -19,9 +19,14 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: Checkmarx AST@3
+-
+- task: Application security testing@2024
   inputs:
-    CheckmarxService: 'HJAzure'
-    projectName: '$(Build.Repository.Name)'
-    branchName: '$(Build.SourceBranchName)'
-    tenantName: 'ast_abdul_ansari'
+    projectName: 'Azurecx'
+    enableProxy: false
+    enableSastScan: true
+    CheckmarxService: 'CxSAST'
+    enableSastBranching: false
+    incScan: false
+    forceScan: true
+    enableDependencyScan: false
