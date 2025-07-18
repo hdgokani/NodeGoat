@@ -38,7 +38,7 @@ jobs:
           # Provide Checkmarx Client Secret
           checkmarx_client_secret: 014DF517-39D1-4453-B7B3-9930C563627C
           # Select a Checkmarx Project
-          project: Github_Actions_Piramal
+          project: GHAction_NodeGoat_Piramal
           # Select a Checkmarx Preset
           #preset: # optional, default is Checkmarx Default
           # Break build based on Checkmarx findings?
