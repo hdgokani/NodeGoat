@@ -30,7 +30,7 @@ jobs:
           # Provide Checkmarx URL
           checkmarx_url: https://cxapactrial.checkmarx.net/
           # Provide team
-          team: /APAC
+          team: /SP/APAC
           # Provide Checkmarx Username
           checkmarx_username:  harshgokani
           # Provide Checkmarx Password
