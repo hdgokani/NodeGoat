@@ -1,0 +1,36 @@
+name: Checkmarx SCA Scan
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  cxsca-scan:
+    name: Checkmarx SCA Scan with Resolver
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Java (required by CxSCA Resolver)
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+
+      - name: Download CxSCA Resolver
+        run: |
+          curl -LJO https://sca-downloads.s3.amazonaws.com/cli/latest/CxSCAResolver.jar
+
+      - name: Run CxSCA Scan
+        run: |
+          java -jar CxSCAResolver.jar \
+            --client-id ${{ secrets.CX_CLIENT_ID }} \
+            --client-secret ${{ secrets.CX_CLIENT_SECRET }} \
+            --tenant ${{ secrets.CX_TENANT }} \
+            --base-uri ${{ secrets.CX_BASE_URI }} \
+            --project-name "${{ secrets.CX_PROJECT_NAME }}" \
+            --scan-types sca \
+            --include-sources .
